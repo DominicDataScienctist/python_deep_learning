@@ -1,0 +1,1 @@
+SKLEARN_TAG = '0.18'
