@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+from sklearn.preprocessing import label_binarize
+
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
@@ -37,3 +39,11 @@ def load_csv(csv_dir, target_label, feat_labels=None):
     else:
         feature = df[feat_labels]
     return feature, target
+
+
+def y2indicator(y):
+    return label_binarize(y, classes=np.unique(y)).transpose()[0]
+
+
+def cost(t, y):
+    return -(t*np.log(y)).sum()
